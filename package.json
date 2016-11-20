@@ -1,0 +1,31 @@
+{
+  "name": "fcc-weather-app",
+  "version": "1.0.0",
+  "description": "freeCodeCamp Local Weather App",
+  "main": "js/bundle.js",
+  "scripts": {
+    "dev": "webpack-dev-server --host 0.0.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ZenMerlin11/fcc-weather-app.git"
+  },
+  "keywords": [
+    "freeCodeCamp",
+    "weather",
+    "app"
+  ],
+  "author": "Jason Boyll",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ZenMerlin11/fcc-weather-app/issues"
+  },
+  "homepage": "https://github.com/ZenMerlin11/fcc-weather-app#readme",
+  "devDependencies": {
+    "source-map-loader": "^0.1.5",
+    "ts-loader": "^1.2.2",
+    "typescript": "^2.0.10",
+    "webpack": "^1.13.3",
+    "webpack-dev-server": "^1.16.2"
+  }
+}
