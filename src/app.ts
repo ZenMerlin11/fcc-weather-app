@@ -6,7 +6,6 @@ function geoFindLocation(): void {
         return;
     }
 
-
 }
 // Get weather for current location
 
