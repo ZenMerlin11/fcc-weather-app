@@ -75,7 +75,7 @@ function getWeather(position: Position): void {
     xhr.open('GET', url, true);
     xhr.responseType = 'json';
     xhr.onreadystatechange = function() {
-        displayWeather(xhr.response);
+        handleXhrResponse(xhr);
     };    
     xhr.send();
 }
@@ -92,8 +92,8 @@ function handleXhrResponse(xhr: XMLHttpRequest) {
     if (xhr.response === null) {
         errorMsg('Error: no response from server');
         return;
-    }
-
+    }    
+    
     // Check for error status
     if (xhr.status != 200) {
         errorMsg(`Error: status ${ xhr.status }`);
