@@ -143,8 +143,7 @@ function updateCond(condDesc: string): void {
 function updateIcon(icon: string): void {
     let elem: HTMLImageElement = 
         document.getElementById('cond-icon') as HTMLImageElement;
-    elem.src = `${ baseIconUrl }${ icon }.png`;
-    elem.width = elem.width * 1.5;
+    elem.src = `${ baseIconUrl }${ icon }.png`;    
 }
 
 // Convert temperature in Kelvins to Degrees Fahrenheit
