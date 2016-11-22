@@ -27,3 +27,10 @@ and then you can push the dist folder to your gh-pages branch using:
 ## References ##
 
 Weather Data provided by [OpenWeatherMap](https://openweathermap.org/)
+
+## Notes ##
+
+The current build of the app only works over http due to the use of
+cross-origin http resources used. Since gh-pages is served over https,
+you may have to change permissions in your browser to allow the use of
+unsafe scripts to view.
