@@ -1,6 +1,7 @@
 // Global app data
 const apiKey: string = 'ffceec59df88c4336a45c093deedd062';
 const baseUrl: string = 'http://api.openweathermap.org/data/2.5/weather?';
+const baseIconUrl: string = 'http://openweathermap.org/img/w/';
 const degSign: string = '\u00B0';
 let tempKelvin: number; // inital value retrieved from openweather
 let tempUnit: string = 'F';
@@ -114,12 +115,14 @@ function displayWeather(response: IOpenWeatherJSON): void {
 
     let city: string = response.name, // city name
         country: string = response.sys.country, // country name         
-        condDesc: string = response.weather[0].main; // weather description
+        condDesc: string = response.weather[0].main, // weather description
+        icon: string = response.weather[0].icon;
     
     // Update weather display
     updateLocation(city, country);
     updateTemp(convertTemp(tempKelvin));
     updateCond(condDesc);
+    updateIcon(icon);
 }
 
 function updateLocation(city: string, country: string): void {
@@ -135,6 +138,12 @@ function updateTemp(temp: number): void {
 function updateCond(condDesc: string): void {
     document.getElementById('cond')
         .textContent = condDesc;
+}
+
+function updateIcon(icon: string): void {
+    let elem: HTMLImageElement = 
+        document.getElementById('cond-icon') as HTMLImageElement;
+    elem.src = `${ baseIconUrl }${ icon }.png`;    
 }
 
 // Convert temperature in Kelvins to Degrees Fahrenheit
