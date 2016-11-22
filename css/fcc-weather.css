@@ -39,3 +39,7 @@ header h1 {
     width: 32px;
     height: 32px;
 }
+
+#temp:hover {
+    cursor: pointer;
+}

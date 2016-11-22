@@ -1,0 +1,42 @@
+{
+    "coord": {
+        "lon": -83.93,
+        "lat": 34.19
+    },
+    "weather": [
+        {
+            "id": 800,
+            "main": "Clear",
+            "description": "clear sky",
+            "icon": "01n"
+        }
+    ],
+    "base": "stations",
+    "main": {
+        "temp": 281.88,
+        "pressure": 1021,
+        "humidity": 19,
+        "temp_min": 280.15,
+        "temp_max": 284.15
+    },
+    "visibility": 16093,
+    "wind": {
+        "speed": 5.1,
+        "deg": 300
+    },
+    "clouds": {
+        "all": 1
+    },
+    "dt": 1479776100,
+    "sys": {
+        "type": 1,
+        "id": 774,
+        "message": 0.1868,
+        "country": "US",
+        "sunrise": 1479816943,
+        "sunset": 1479853683
+    },
+    "id": 4195544,
+    "name": "Flowery Branch",
+    "cod": 200
+}
