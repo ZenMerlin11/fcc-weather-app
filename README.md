@@ -4,8 +4,8 @@ Live examples on [github](https://zenmerlin11.github.io/fcc-weather-app/)
 ## Getting Started ##
 
 This project was built using typescript and webpack. It can be viewed from
-the codepen link above or it can be run locally as follows. First, install
-Node and NPM. Clone the repo and then in the root project folder run:
+the link above or it can be run locally as follows. First, install Node
+and NPM. Clone the repo and then in the root project folder run:
 
     npm install
 
