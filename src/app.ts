@@ -7,7 +7,6 @@ const degSign: string = '\u00B0';
 let tempKelvin: number; // inital value retrieved from openweather
 let tempUnit: string = 'F';
 let convertTemp: Function = kelvinToFahrenheit;
-let watchId: number = 0;
 
 // Interface for freegeoip.net json
 interface IFreeGeoIP_JSON {
@@ -143,7 +142,7 @@ function updateCond(condDesc: string): void {
 function updateIcon(icon: string): void {
     let elem: HTMLImageElement = 
         document.getElementById('cond-icon') as HTMLImageElement;
-    elem.src = `${ baseIconUrl }${ icon }.png`;    
+    elem.src = `${ baseIconUrl }${ icon }.png`;
 }
 
 // Convert temperature in Kelvins to Degrees Fahrenheit

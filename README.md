@@ -1,5 +1,5 @@
 # freeCodeCamp Local Weather App
-Live examples on [github](https://zenmerlin11.github.io/fcc-weather-app/)
+Live examples on [codepen](http://codepen.io/ZenMerlin11/full/ZBemxx/)
 
 ## Getting Started ##
 
@@ -33,4 +33,4 @@ Weather Data provided by [OpenWeatherMap](https://openweathermap.org/)
 The current build of the app only works over http due to the use of
 cross-origin http resources used. Since gh-pages is served over https,
 you may have to change permissions in your browser to allow the use of
-unsafe scripts to view.
+unsafe scripts to view it on gh-pages.
