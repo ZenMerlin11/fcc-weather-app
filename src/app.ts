@@ -2,11 +2,27 @@
 const apiKey: string = 'ffceec59df88c4336a45c093deedd062';
 const baseUrl: string = 'http://api.openweathermap.org/data/2.5/weather?';
 const baseIconUrl: string = 'http://openweathermap.org/img/w/';
+const geoUrl: string = 'http://freegeoip.net/json/';
 const degSign: string = '\u00B0';
 let tempKelvin: number; // inital value retrieved from openweather
 let tempUnit: string = 'F';
 let convertTemp: Function = kelvinToFahrenheit;
 let watchId: number = 0;
+
+// Interface for freegeoip.net json
+interface IFreeGeoIP_JSON {
+    ip: string;
+    country_code: string;
+    country_name: string;
+    region_code: string;
+    region_name: string;
+    city: string;
+    zip_code: string;
+    time_zone: string;
+    latitude: number;
+    longitude: number;
+    metro_code: number;
+}
 
 // Interfaces for Open Weather API json
 // Only features needed for this app are implemented
@@ -35,53 +51,26 @@ interface ISys {
 
 // App entry point
 function main(): void {
-    // Verify browser support
-    if (!navigator.geolocation) {
-        errorMsg("Error: Geolocation not supported by your browser.");
-        return;
-    }
-
-    // Add event listeners on position change
-    watchId = navigator.geolocation.watchPosition(
-        getWeather, geoError, geoOptions
-    );
+    // Initiate get location and local weather requests
+    getJSON(geoUrl, getWeather);
 }
 
-// watchPosition on error callback
-function geoError(): void {
-    errorMsg("Error: Unable to retrieve position.")
-}
-
-// watchPosition options 
-let geoOptions: PositionOptions = {
-    enableHighAccuracy: false,
-    maximumAge: 0,
-    timeout: 30000
-}
-
-// Get weather for current location
-function getWeather(position: Position): void {
-    // Build URL for weather request
-    let lat: number = position.coords.latitude;
-    let lon: number = position.coords.longitude;
-    let url: string = `${ baseUrl }lat=${ lat }&lon=${ lon }&appid=${ apiKey }`;
-
-    // Create and issue request for weather data
+function getJSON(url: string, callback: Function): void {
     let xhr: XMLHttpRequest = new XMLHttpRequest();
     if (!xhr) {
-        errorMsg('Error: Cannot create XMLHttp instance');
+        errorMsg('Error: Cannot create XMLHttpRequest instance');
         return;
     }
     xhr.open('GET', url, true);
     xhr.responseType = 'json';
     xhr.onreadystatechange = function() {
-        handleXhrResponse(xhr);
+        handleXhrResponse(xhr, callback);
     };    
     xhr.send();
 }
 
-// Response handler
-function handleXhrResponse(xhr: XMLHttpRequest) {
+// XMLHttpRequest Response handler
+function handleXhrResponse(xhr: XMLHttpRequest, callback: Function) {
     // Check that request is completed
     if (xhr.readyState != 4) {
         // do nothing if request is incomplete
@@ -101,7 +90,18 @@ function handleXhrResponse(xhr: XMLHttpRequest) {
     }
 
     // If no errors, display weather data
-    displayWeather(xhr.response);
+    callback(xhr.response);
+}
+
+// Get weather for current location
+function getWeather(response: IFreeGeoIP_JSON): void {
+    // Build URL for weather request
+    let lat: number = response.latitude;
+    let lon: number = response.longitude;
+    let url: string = `${ baseUrl }lat=${ lat }&lon=${ lon }&appid=${ apiKey }`;
+
+    // Create and issue request for weather data
+    getJSON(url, displayWeather);
 }
 
 // Update display of current weather
@@ -132,7 +132,7 @@ function updateLocation(city: string, country: string): void {
 
 function updateTemp(temp: number): void {
     document.getElementById('temp')
-        .textContent = `${ temp.toString() } ${ degSign } ${ tempUnit }`;
+        .textContent = `${ temp.toString() }${ degSign }${ tempUnit }`;
 }
 
 function updateCond(condDesc: string): void {
