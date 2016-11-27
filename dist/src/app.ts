@@ -148,15 +148,15 @@ function updateIcon(icon: string): void {
 // Convert temperature in Kelvins to Degrees Fahrenheit
 function kelvinToFahrenheit(tempK: number): number {
     // Tf = Tk x 9/5 - 459.67
-    // Rounds result to one decimal place
-    return Math.round((tempK * 9 / 5 - 459.67) * 10) / 10;
+    // Rounds result to nearest integer
+    return Math.round(tempK * 9 / 5 - 459.67);
 }
 
 // Convert temperature in Kelvins to Degrees Celsius
 function kelvinToCelsius(tempK: number): number {
     // Tc = Tk - 273.15
-    // Rounds result to one decimal place
-    return Math.round((tempK - 273.15) * 10) / 10;
+    // Rounds result to nearest integer
+    return Math.round(tempK - 273.15);
 }
 
 // Toggle between Fahrenheit or Celsius units

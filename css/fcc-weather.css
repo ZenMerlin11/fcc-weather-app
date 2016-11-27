@@ -1,8 +1,10 @@
 body {
-    height: 100vh;    
-    margin: 0 auto;    
+    height: 100%;
+    margin: 0;
     font-family: sans-serif;
     background: linear-gradient(to top, black, gray);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     color: white;
     text-shadow: 2px 2px 4px black;
 }

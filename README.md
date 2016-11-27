@@ -3,8 +3,12 @@ Live examples on [codepen](http://codepen.io/ZenMerlin11/full/ZBemxx/)
 
 ## Getting Started ##
 
-This project was built using typescript and webpack. It can be viewed from
-the link above or it can be run locally as follows. First, install Node
+This project was built using typescript and webpack. The dev and build
+scripts below require bash. If your environment does not support bash
+shell scripts, you will need to modify these to suit your needs.
+
+A live example of the project can be viewed on codepen from the link
+above or it can be run locally as follows. First, install Node
 and NPM. Clone the repo and then in the root project folder run:
 
     npm install
